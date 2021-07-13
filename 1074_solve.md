@@ -1,6 +1,6 @@
 # 문제 1074
 ## 1. 문제 설명
-#### 난이도 <img src="https://d2gd6pc034wcta.cloudfront.net/tier/10.svg" width="11em"></img>
+ **난이도** <img src="https://d2gd6pc034wcta.cloudfront.net/tier/10.svg" width="11em"></img>
 한수는 크기가 2N × 2N인 2차원 배열을 Z모양으로 탐색하려고 한다. 예를 들어, 2×2배열을 왼쪽 위칸, 오른쪽 위칸, 왼쪽 아래칸, 오른쪽 아래칸 순서대로 방문하면 Z모양이다.
 
 <img src="https://upload.acmicpc.net/21c73b56-5a91-43aa-b71f-9b74925c0adc/-/preview/" width="128px"></img>
