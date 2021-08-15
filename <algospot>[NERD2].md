@@ -36,8 +36,66 @@ c++에는 균형잡힌 이진트리 구조인 map이 있다.
 
 어떻게 하면 이걸 구현할 수 있을까 고민하는 과정에서 c++ STL의 map 자료구조를 배웠고, 문제의 조건을 다시 한번 꼼꼼히 살펴봐야한다는 것을 느꼈다.
 
+추가로 어떤 STL을 사용하려면 cpp reference을 읽고 그 특징을 꼼꼼히 봐야 문제를 해결할때 더 빠르게 풀 수 있다는 것을 느낌.
+
 ##4. Code
 
-푸는중이다.
+``` cpp
 
+#include <iostream>
+#include <algorithm>
+#include <map>
+using namespace std;
+
+int C, N;
+int sum;
+map<int, int> coords;
+
+bool isDominated(int x, int y){
+    map<int, int>::iterator it = coords.lower_bound(x);
+    if(it == coords.end()) return false;
+    return it->second > y;
+}
+
+void removeDominated(const int x, const int y){
+    coords.insert(make_pair(x, y));
+    map<int, int>::iterator it = coords.find(x);
+
+    if(it == coords.begin()) return;
+    //if not empty
+    --it;
+    while(it->second < y){
+        if(it == coords.begin()) {
+            coords.erase(it);
+            break;
+        }
+        else {
+            map<int, int>::iterator tmp = it;
+            tmp--;
+            coords.erase(it);
+            it = tmp;
+        }
+    }
+}
+
+int main(){
+    cin >> C;
+    for(int c = 0 ; c < C ; c++){
+        cin >> N;
+        coords.clear();
+        sum = 0;
+        for(int i = 0 ; i < N ; i++){
+            int p, q;
+            cin >> p >> q;
+            if(!isDominated(p, q))
+                removeDominated(p, q);
+            sum += coords.size();
+        }
+        cout << sum << "\n";
+    }
+    return 0;
+}
+
+
+```
 
